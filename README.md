@@ -95,7 +95,7 @@ class Person(Schema):
         return context
 
 
-assert Phone.from_dict({'name': 'Gesiel', 'lastname': 'Souza'}).full_name == 'Gesiel Souza'
+assert Person.from_dict({'name': 'Gesiel', 'lastname': 'Souza'}).full_name == 'Gesiel Souza'
 ```
 
 
