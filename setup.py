@@ -1,7 +1,7 @@
 import setuptools
 setuptools.setup(
     name="gesiel",
-    version="0.1.6",
+    version="0.1.7",
     url="https://github.com/gabrielweich/gesiel",
     author="Gabriel Weich",
     author_email="gabrielweich.dev@gmail.com",
