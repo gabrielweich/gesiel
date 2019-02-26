@@ -20,7 +20,11 @@ class Field:
     
     def load(self, value):
         return value
-
+    
+    @classmethod
+    def new(cls, value):
+        return cls.load(cls, value)
+        
 class String(Field):
     def load(self, value):
         if isinstance(value, str):

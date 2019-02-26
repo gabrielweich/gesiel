@@ -2,6 +2,7 @@ import pytest
 
 from gesiel import Schema
 from gesiel.fields import Int
+from gesiel.exceptions import ValidationError
 
 def test_custom_field():
     class Code(Int):
@@ -13,3 +14,9 @@ def test_custom_field():
         code = Code()
 
     assert Person.from_dict({'code': "25"}).code == 50
+
+def test_single_field():
+    assert Int.new('2') == 2
+    with pytest.raises(ValidationError):
+        Int.new('gesiel')
+        
