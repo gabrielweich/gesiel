@@ -41,3 +41,12 @@ class Int(Field):
             return int(value)
         except ValueError:
             raise ValidationError(error_code=Messages.MUST_BE_INTEGER)
+
+class Number(Field):
+    def load(self, value):
+        if isinstance(value, float):
+            return value
+        try:
+            return float(value)
+        except ValueError:
+            raise ValidationError(error_code=Messages.MUST_BE_NUMBER)

@@ -40,7 +40,7 @@ def test_nest():
         age = fields.Int(required=True)
         dead = fields.Bool()
         color = fields.String()
-    assert Person.from_dict(Person.from_dict({'age': 25, 'dead': None}).to_dict()).to_dict() == {'age': 25, 'name':'Gesiel', 'dead': None}
+    assert Person.from_dict(Person.from_dict({'age': 25, 'dead': None}).to_dict()).to_dict(skip_none=True) == {'age': 25, 'name':'Gesiel'}
 
 
 def test_nest_with_skip_none():
@@ -49,4 +49,4 @@ def test_nest_with_skip_none():
         age = fields.Int(required=True)
         dead = fields.Bool()
         color = fields.String()
-    assert Person.from_dict(Person.from_dict({'age': 25, 'dead': None}, skip_none=True).to_dict()).to_dict() == {'age': 25, 'name':'Gesiel'}
+    assert Person.from_dict(Person.from_dict({'age': 25, 'dead': None}, skip_none=True).to_dict()).to_dict(skip_none=True) == {'age': 25, 'name':'Gesiel'}

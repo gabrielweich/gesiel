@@ -9,11 +9,13 @@ def test_simple_person():
         name = fields.String()
         age = fields.Int()
         dead = fields.Bool()
+        pool = fields.Bool()
 
     p = Person.from_dict({'name': 'Gesiel', 'age': 29, 'dead': False})
     assert p.name == 'Gesiel'
     assert p.age == 29
     assert p.dead == False
+    assert p.pool is None
 
 
 def test_default():
@@ -130,5 +132,12 @@ def test_set_self_attr():
     p = Person.from_dict({})
     p.init()
     assert p.to_dict() == {'name': 'Gesiel'}
+
+def test_number():
+    class Person(Schema):
+        salary = fields.Number()
+    
+    assert Person.from_dict({'salary': 200.15}).salary == 200.15
+    assert isinstance(Person.from_dict({'salary': 200}).salary, float)
 
 

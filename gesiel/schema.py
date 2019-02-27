@@ -39,6 +39,8 @@ class Schema(metaclass=SchemaCreator):
                     field_values[name] = field.default
                 elif field.required:
                     errors[name].append(ValidationError(error_code=Messages.MISSING_REQUIRED_FIELD))
+                else:
+                    field_values[name] = None
             elif values[name] is None:
                 field_values[name] = None
         if errors:
